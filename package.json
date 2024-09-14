@@ -1,0 +1,12 @@
+{
+  "name": "linux-commands",
+  "version": "1.0.0",
+  "description": "Implementing popular linux commands using Node.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahesh Kumaar Balaji <maheshkumaar.balaji@outlook.com>",
+  "license": "MIT"
+}
