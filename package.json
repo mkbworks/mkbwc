@@ -1,12 +1,19 @@
 {
-  "name": "linux-commands",
+  "name": "mkbwc",
   "version": "1.0.0",
-  "description": "Implementing popular linux commands using Node.js",
+  "description": "Command line tool to compute common metrics for a text file.",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "mkbwc": "index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js -l root.txt"
   },
   "author": "Mahesh Kumaar Balaji <maheshkumaar.balaji@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "figlet": "^1.7.0"
+  }
 }
