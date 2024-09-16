@@ -45,4 +45,8 @@ files.forEach(file => {
     {
         console.log(`${(totalBytes > 0) ? totalBytes : ""} ${(totalLines > 0) ? totalLines : ""} ${(totalWords > 0) ? totalWords : ""} ${(totalChars > 0) ? totalChars : ""} ${file}`);
     }
+    else
+    {
+        console.log(`${(totalLines > 0) ? totalLines : ""} ${(totalWords > 0) ? totalWords : ""} ${(totalChars > 0) ? totalChars : ""} ${file}`);
+    }
 });

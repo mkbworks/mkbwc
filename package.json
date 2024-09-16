@@ -1,7 +1,7 @@
 {
   "name": "mkbwc",
   "version": "1.0.0",
-  "description": "Command line tool to compute common metrics for a text file.",
+  "description": "Command line tool to compute common metrics for a given file.",
   "main": "index.js",
   "type": "module",
   "bin": {
