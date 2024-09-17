@@ -8,7 +8,7 @@
     "mkbwc": "index.js"
   },
   "scripts": {
-    "start": "node index.js -l root.txt"
+    "start": "node index.js -l ./assets/test-files/root-one.txt"
   },
   "author": "Mahesh Kumaar Balaji <maheshkumaar.balaji@outlook.com>",
   "license": "MIT",

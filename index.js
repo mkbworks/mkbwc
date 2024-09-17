@@ -3,6 +3,7 @@
 import { Command } from "commander";
 import figlet from "figlet";
 import FileMetrics from "./lib/FileMetrics.js";
+import { isFileAccessible } from "./lib/utils.js";
 
 console.log(figlet.textSync("MKBWC"));
 const program = new Command();
@@ -19,34 +20,52 @@ program
 const opts = program.opts();
 const files = program.args;
 files.forEach(file => {
-    let totalBytes = 0, totalLines = 0, totalWords = 0, totalChars = 0;
-    let fileMetric = new FileMetrics(file);
-    if(opts.totalBytes)
+    if(isFileAccessible(file))
     {
+        let totalBytes = 0, totalLines = 0, totalWords = 0, totalChars = 0;
+        let result = Object.create(null);
+        let fileMetric = new FileMetrics(file);
         totalBytes = fileMetric.GetTotalBytes();
-    }
-    
-    if(opts.totalLines)
-    {
         totalLines = fileMetric.GetTotalLines();
-    }
-
-    if(opts.totalWords)
-    {
         totalWords = fileMetric.GetTotalWords();
-    }
-    
-    if(opts.totalChars)
-    {
         totalChars = fileMetric.GetTotalCharacters();
-    }
-    
-    if(opts.totalBytes || opts.totalLines || opts.totalWords || opts.totalChars)
-    {
-        console.log(`${(totalBytes > 0) ? totalBytes : ""} ${(totalLines > 0) ? totalLines : ""} ${(totalWords > 0) ? totalWords : ""} ${(totalChars > 0) ? totalChars : ""} ${file}`);
+        
+        if(opts.totalBytes || opts.totalLines || opts.totalWords || opts.totalChars)
+        {
+            if(opts.totalBytes)
+            {
+                result["byte_count"] = totalBytes;
+            }
+
+            if(opts.totalLines)
+            {
+                result["line_count"] = totalLines;
+            }
+
+            if(opts.totalWords)
+            {
+                result["word_count"] = totalWords;
+            }
+
+            if(opts.totalChars)
+            {
+                result["char_count"] = totalChars;
+            }
+
+            result["file"] = file;
+        }
+        else
+        {
+            result["line_count"] = totalLines;
+            result["word_count"] = totalWords;
+            result["char_count"] = totalChars;
+            result["file"] = file;
+        }
+
+        console.table(result);
     }
     else
     {
-        console.log(`${(totalLines > 0) ? totalLines : ""} ${(totalWords > 0) ? totalWords : ""} ${(totalChars > 0) ? totalChars : ""} ${file}`);
+        console.error(`mkbwc: ${file}: File is either not available or not accessible.`);
     }
 });

@@ -19,4 +19,4 @@ npm install -g
 This global installation works because of the following configuration made in the project.
 
 - Adding the **bin** object at top-level of the `package.json` file. This object contains a key for a command - `mkbwc` and the value for this key points to the file that must be executed, when this command is invoked in the command line.
-- At the top of index.js (the root file to executed), a `shebang` line is added which tells the system that the file must be executed with `node` compiler. 
+- At the top of `index.js` (the root file to executed), a `shebang` line is added which tells the system that the file must be executed with `node` compiler. 
