@@ -6,17 +6,40 @@
 
 ## Setting it up locally
 
-To run the command locally, clone the github repository to a local machine and run the below commands.
+Clone the github repository to your local machine and run the below commands.
 
 ```bash
-# Install all the dependencies for the project.
+# This command installs all the dependencies for the project.
 npm install
 
-# Install the command line tool globally, so that it can be used anywhere in the machine.
+# This command runs the application with a sample text file and produces the output.
+npm start
+```
+
+To run this command in a linux-like fashion i.e., `mkbwc -l -c root.txt`, perform the below steps.
+
+```bash
+# This command checks if mkbwc is already installed.
+mkbwc -V
+```
+
+If the command returns a valid version, execute the below command.
+
+```bash
+# This command uninstalls the mkbwc package globally in the system.
+npm uninstall -g
+```
+
+If the `mkbwc -V` command throws a command not found error, then execute the below.
+
+```bash
+# This command installs the mkbwc package globally.
 npm install -g
 ```
 
-This global installation works because of the following configuration made in the project.
+## Linux-like Implementation
 
-- Adding the **bin** object at top-level of the `package.json` file. This object contains a key for a command - `mkbwc` and the value for this key points to the file that must be executed, when this command is invoked in the command line.
+This linux-like implementation works because of the below configuration made in the project.
+
+- Adding the **bin** object at top-level of the `package.json` file. This object contains a key for command `mkbwc` and the value points to the starter javascript file that must be executed, when this command is invoked in the command line.
 - At the top of `index.js` (the root file to executed), a `shebang` line is added which tells the system that the file must be executed with `node` compiler. 
