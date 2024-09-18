@@ -43,3 +43,13 @@ This linux-like implementation works because of the below configuration made in 
 
 - Adding the **bin** object at top-level of the `package.json` file. This object contains a key for command `mkbwc` and the value points to the starter javascript file that must be executed, when this command is invoked in the command line.
 - At the top of `index.js` (the root file to executed), a `shebang` line is added which tells the system that the file must be executed with `node` compiler. 
+
+## Automated Testing
+
+This project uses the `mocha` framework for automated testing. The test suites and test cases are defined under the `/test/` folder in the root directory. Run the below command to execute all the test cases.
+
+```bash
+npm run test
+```
+
+![Unit Testing](/assets/images/unit-testing.png "Unit Testing")
