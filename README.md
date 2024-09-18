@@ -11,30 +11,12 @@ Clone the github repository to your local machine and run the below commands.
 ```bash
 # This command installs all the dependencies for the project.
 npm install
-
-# This command runs the application with a sample text file and produces the output.
-npm start
 ```
 
-To run this command in a linux-like fashion i.e., `mkbwc -l -c root.txt`, perform the below steps.
+To run this command in a linux-like fashion i.e., `mkbwc -l -c root.txt`, install the `mkbwc` command globally by executing the following in the root directory of the project.
 
 ```bash
-# This command checks if mkbwc is already installed.
-mkbwc -V
-```
-
-If the command returns a valid version, execute the below command.
-
-```bash
-# This command uninstalls the mkbwc package globally in the system.
-npm uninstall -g
-```
-
-If the `mkbwc -V` command throws a command not found error, then execute the below.
-
-```bash
-# This command installs the mkbwc package globally.
-npm install -g
+npm run global-install
 ```
 
 ## Linux-like Implementation
@@ -53,3 +35,18 @@ npm run test
 ```
 
 ![Unit Testing](/assets/images/unit-testing.png "Unit Testing")
+
+## Example usage
+
+There are 3 pre-configured examples available for your reference. Run the below commands to see them in action.
+
+```bash
+# Example one - Gets the metric for a single text file
+npm run single-file
+
+# Example two - Gets the metrics for two text files
+npm run multi-file
+
+# Example three - Get the byte count for a PDF file
+npm run total-bytes
+```

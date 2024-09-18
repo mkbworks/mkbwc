@@ -8,7 +8,10 @@
     "mkbwc": "index.js"
   },
   "scripts": {
-    "start": "node index.js -l ./assets/test-files/root-one.txt",
+    "global-install": "npm uninstall -g && npm install -g",
+    "single-file": "npm run global-install && mkbwc ./test/test-files/case-one.txt",
+    "multi-file": "npm run global-install && mkbwc ./test/test-files/case-two.txt ./test/test-files/case-three.txt",
+    "total-bytes": "npm run global-install && mkbwc -b ./test/test-files/case-five.pdf",
     "test": "mocha"
   },
   "author": "Mahesh Kumaar Balaji <maheshkumaar.balaji@outlook.com>",
