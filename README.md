@@ -40,6 +40,8 @@ This section contains various example variations for the **mkbwc** command and t
 
 ### Example One
 
+In this example, we fetch the number of lines, words and bytes present in file - `test-one.txt`. If there are no options provided in the command line, the program computes the 3 aforementioned metrics.
+
 **Input Command**
 
 ```bash
@@ -54,19 +56,23 @@ This section contains various example variations for the **mkbwc** command and t
 
 ### Example Two
 
+In this example, we fetch the number of lines present in file - `test-two.txt`.
+
 **Input Command**
 
 ```bash
-./mkbwc.out ./test-files/test-two.txt
+./mkbwc.out -l ./test-files/test-two.txt
 ```
 
 **Output displayed**
 
 ```bash
-5  268  1663  test-two.txt
+5  test-two.txt
 ```
 
 ### Example Three
+
+In this example, we fetch the number of bytes of content present in file - `test-two.txt`.
 
 **Input Command**
 
@@ -81,6 +87,8 @@ This section contains various example variations for the **mkbwc** command and t
 ```
 
 ### Example Four
+
+In this example, we display the help message associated with the `MKBWC` command to understand the various options available for us to use with the command.
 
 **Input Command**
 
@@ -99,3 +107,23 @@ Options available:
   -m	Output the number of characters in the given file
   -w	Output the number of words in the given file
 ```
+
+### Example Five
+
+In this example, we chain the `mkbwc` command with the `find` command such that the output of the `find` command which yields the list of all files in the given folder, as an input to the `mkbwc` command.
+
+**Input Command**
+
+```bash
+find "./test-files" -type f | ./mkbwc.out -m
+```
+
+**Output displayed**
+
+```bash
+1663  test-two.txt
+285  test-one.txt
+547  test-three.txt
+```
+
+Please note that, if there are any filename(s) provided with the `mkbwc` command, only those files will be processed and the input from `find` command will be ignored. So, it is recommended to mention only the flags with `mkbwc`, when it is being chained with other linux commands for getting input files.
