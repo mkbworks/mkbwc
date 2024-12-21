@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -10,9 +9,6 @@ import (
 	"unicode/utf8"
 	"path/filepath"
 )
-
-// Size of each chunk of data read from the file.
-const CHUNK_SIZE = 1024
 
 // Structure to store computed metrics for an individual file in the file system.
 type FileMetrics struct {
@@ -40,24 +36,43 @@ type FileMetrics struct {
 // The method computes metrics as per the flags set for the file.
 func (fm *FileMetrics) Compute() error {
 	CompleteFilePath := strings.TrimSpace(fm.CompleteFilePath)
-	if strings.EqualFold(CompleteFilePath, "") {
-		return errors.New("file path cannot be empty")
-	}
-
 	fileHandler, err := os.Open(CompleteFilePath)
 	if err != nil {
-		return err
+		fae := new(FileAccessError)
+		fae.CompleteFilePath = CompleteFilePath
+		fae.Action = "File Access"
+		fae.Message = err.Error()
+		return fae
 	}
 
 	defer fileHandler.Close()
 	reader := bufio.NewReader(fileHandler)
+	err = fm.ProcessMetrics(reader)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Read the contents from the given reader and process the metrics as per flags setup for the file.
+func (fm *FileMetrics) ProcessMetrics(reader *bufio.Reader) error {
+	breakAtEnd := false
 	for {
 		nextLine, err := reader.ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
-				break
+				if strings.EqualFold(nextLine, "") {
+					break
+				} else {
+					breakAtEnd = true
+				}
 			} else {
-				return err
+				fae := new(FileAccessError)
+				fae.Action = "Process Metrics"
+				fae.CompleteFilePath = ""
+				fae.Message = err.Error()
+				return fae
 			}
 		}
 
@@ -86,6 +101,10 @@ func (fm *FileMetrics) Compute() error {
 			chunk := []byte(nextLine)
 			fm.ByteCount += len(chunk)
 		}
+
+		if breakAtEnd {
+			break
+		}
 	}
 
 	return nil
@@ -98,22 +117,26 @@ func (fm *FileMetrics) Compute() error {
 func (fm *FileMetrics) Print() string {
 	line := ""
 	if fm.LineFlag {
-		line += fmt.Sprintf("  %d", fm.LineCount)
+		line = line + "  " + fmt.Sprintf("%d", fm.LineCount)
+		line = strings.TrimSpace(line)
 	}
 
 	if fm.WordFlag {
-		line += fmt.Sprintf("  %d", fm.WordCount)
+		line = line + "  " + fmt.Sprintf("%d", fm.WordCount)
+		line = strings.TrimSpace(line)
 	}
 
 	if fm.CharFlag {
-		line += fmt.Sprintf("  %d", fm.CharCount)
+		line = line + "  " + fmt.Sprintf("%d", fm.CharCount)
+		line = strings.TrimSpace(line)
 	}
 
 	if fm.ByteFlag {
-		line += fmt.Sprintf("  %d", fm.ByteCount)
+		line = line + "  " + fmt.Sprintf("%d", fm.ByteCount)
+		line = strings.TrimSpace(line)
 	}
 
-	line += fmt.Sprintf("  %s", filepath.Base(fm.CompleteFilePath))
+	line = line + "  " + strings.ToLower(filepath.Base(fm.CompleteFilePath))
 	line = strings.TrimSpace(line)
 	return line
 }

@@ -19,8 +19,13 @@ func main() {
 	}
 
 	for _, FileName := range FileNames {
-		fm := newFileMetrics(FileName, *LinesFlag, *WordsFlag, *CharsFlag, *BytesFlag)
-		err := fm.Compute()
+		fm, err := newFileMetrics(FileName, *LinesFlag, *WordsFlag, *CharsFlag, *BytesFlag)
+		if err != nil {
+			fmt.Printf("Error occurred while computing file metrics :: %s", err.Error())
+			continue
+		}
+
+		err = fm.Compute()
 		if err != nil {
 			fmt.Printf("Error while computing metrics for file [%s] :: %s", FileName, err.Error())
 			continue
