@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// Test case to validate the working of creating a new FileMetrics instance and setting up the appropriate flags.
 func Test_NewFileMetrics(t *testing.T) {
 	testCases := []struct {
 		Name string

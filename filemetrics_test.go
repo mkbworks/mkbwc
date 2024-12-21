@@ -34,13 +34,13 @@ func Test_FileMetrics_Process(t *testing.T) {
 		OutByteCount int
 		OutError string
 	} {
-		{ "A single line input with all flags set and ending with newline", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\n", true, true, true, true, 1, 5, 26, 26, "" },
-		{ "A single line input with all flags set but not ending with newline", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am a Software Engineer.", true, true, true, true, 1, 5, 25, 25, "" },
-		{ "A multi-line input with line flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", true, false, false, false, 2, 0, 0, 0, "" },
-		{ "A multi-line input with word flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, true, false, false, 0, 10, 0, 0, "" },
-		{ "A multi-line input with character flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, true, false, 0, 0, 51, 0, "" },
-		{ "A multi-line input with byte flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, false, true, 0, 0, 0, 51, "" },
-		{ "A single line input with non-ASCII characters", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "This is so @்லஉஎஉ்க்எஙுஇக\n", true, true, true, true, 1, 4, 25, 51, ""  },
+		{ "A single line input with all flags set and ending with newline", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\n", true, true, true, true, 1, 5, 26, 26, "" },
+		{ "A single line input with all flags set but not ending with newline", "./test-files/file-one.txt", "I am a Software Engineer.", true, true, true, true, 1, 5, 25, 25, "" },
+		{ "A multi-line input with line flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", true, false, false, false, 2, 0, 0, 0, "" },
+		{ "A multi-line input with word flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, true, false, false, 0, 10, 0, 0, "" },
+		{ "A multi-line input with character flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, true, false, 0, 0, 51, 0, "" },
+		{ "A multi-line input with byte flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, false, true, 0, 0, 0, 51, "" },
+		{ "A single line input with non-ASCII characters", "./test-files/file-one.txt", "This is so @்லஉஎஉ்க்எஙுஇக\n", true, true, true, true, 1, 4, 25, 51, ""  },
 	}
 
 	for _, testCase := range testCases {
@@ -106,13 +106,13 @@ func Test_FileMetrics_Print(t *testing.T) {
 		OutLine string
 		OutError string
 	} {
-		{ "A single line input with all flags set and ending with newline", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\n", true, true, true, true, "1  5  26  26  file-one.txt", "" },
-		{ "A single line input with all flags set but not ending with newline", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am a Software Engineer.", true, true, true, true, "1  5  25  25  file-one.txt", "" },
-		{ "A multi-line input with line flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", true, false, false, false, "2  file-one.txt", "" },
-		{ "A multi-line input with word flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, true, false, false, "10  file-one.txt", "" },
-		{ "A multi-line input with character flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, true, false, "51  file-one.txt", "" },
-		{ "A multi-line input with byte flag set", "/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, false, true, "51  file-one.txt", "" },
-		{ "A single line input with non-ASCII characters","/Users/maheshkumaarbalaji/Projects/mkbwc/TestFiles/file-one.txt", "This is so @்லஉஎஉ்க்எஙுஇக\n", true, true, true, true, "1  4  25  51  file-one.txt", "" },
+		{ "A single line input with all flags set and ending with newline", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\n", true, true, true, true, "1  5  26  26  file-one.txt", "" },
+		{ "A single line input with all flags set but not ending with newline", "./test-files/file-one.txt", "I am a Software Engineer.", true, true, true, true, "1  5  25  25  file-one.txt", "" },
+		{ "A multi-line input with line flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", true, false, false, false, "2  file-one.txt", "" },
+		{ "A multi-line input with word flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, true, false, false, "10  file-one.txt", "" },
+		{ "A multi-line input with character flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, true, false, "51  file-one.txt", "" },
+		{ "A multi-line input with byte flag set", "./test-files/file-one.txt", "I am Mahesh Kumaar Balaji.\nI am a Software Engineer.\n", false, false, false, true, "51  file-one.txt", "" },
+		{ "A single line input with non-ASCII characters","./test-files/file-one.txt", "This is so @்லஉஎஉ்க்எஙுஇக\n", true, true, true, true, "1  4  25  51  file-one.txt", "" },
 	}
 
 	for _, testCase := range testCases {
