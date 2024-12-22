@@ -7,7 +7,7 @@ MKBWC is a command line tool created using Go to compute common metrics for any 
 - Number of characters present in the file
 - Number of bytes present in the file
 
-This is my solution to the challenge posted at [Coding Challenges](https://codingchallenges.fyi/challenges/challenge-wc).
+This is my solution to the challenge posted at [Coding Challenges](https://codingchallenges.fyi/challenges/challenge-wc) to create my own implementation of the `wc` linux command.
 
 ## Running the project locally
 
