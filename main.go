@@ -40,19 +40,12 @@ func main() {
 		}
 	}
 
-	for _, FileName := range FileNames {
-		fm, err := newFileMetrics(FileName, *LinesFlag, *WordsFlag, *CharsFlag, *BytesFlag)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error occurred while computing file metrics for file [%s] :: %s", FileName, err.Error())
-			continue
-		}
-
-		err = fm.Compute()
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error while computing metrics for file [%s] :: %s", FileName, err.Error())
-			continue
-		}
-
-		fmt.Println(fm.Print())
-	}
+	bp := new(BulkProcess)
+	bp.LineFlag = *LinesFlag
+	bp.WordFlag = *WordsFlag
+	bp.CharFlag = *CharsFlag
+	bp.ByteFlag = *BytesFlag
+	bp.Files = make([]string, 0)
+	bp.Files = append(bp.Files, FileNames...)
+	bp.ComputeMetrics()
 }
