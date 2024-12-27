@@ -1,6 +1,6 @@
 # MKBWC
 
-MKBWC is a command line tool created using Go to compute common metrics for any text file. It exposes the below metrics for any given text file.
+MKBWC is a command line tool created using Go to compute common metrics for a text file. The command computes the below metrics:
 
 - Number of lines present in the file
 - Number of words present in the file

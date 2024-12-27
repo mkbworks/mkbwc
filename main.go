@@ -40,6 +40,11 @@ func main() {
 		}
 	}
 
+	if len(FileNames) == 0 {
+		fmt.Fprintf(os.Stderr, "No file(s) given in the command-line arguments.")
+		os.Exit(1)
+	}
+
 	bp := new(BulkProcess)
 	bp.LineFlag = *LinesFlag
 	bp.WordFlag = *WordsFlag
