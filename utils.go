@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 // Creates and returns a pointer to a new instance of FileMetrics after setting all the appropriate metric flags.
@@ -23,6 +24,17 @@ func newFileMetrics(CompleteFilePath string, LineFlag bool, WordFlag bool, CharF
 		fae.CompleteFilePath = CompleteFilePath
 		fae.Action = "File Mode"
 		fae.Message = "The given path does not point to a file"
+		return nil, fae
+	}
+
+	fileExtension := filepath.Ext(CompleteFilePath)
+	fileExtension = strings.TrimSpace(fileExtension)
+	fileExtension = strings.TrimPrefix(fileExtension, ".")
+	if !strings.EqualFold(fileExtension, "txt") {
+		fae := new(FileAccessError)
+		fae.CompleteFilePath = CompleteFilePath
+		fae.Action = "File Extension"
+		fae.Message = "The given file path does not point to a text file."
 		return nil, fae
 	}
 
