@@ -14,14 +14,15 @@ This is my solution to the challenge posted at [Coding Challenges](https://codin
 To build and run the project, execute the following commands:
 
 ```bash
-# Below command builds the project and generates the output executable file.
-# The name of the executable file is main.out by default. 
-# If you want a different name, you can run the build command with the -o flag.
-go build -o mkbwc.out
+# Convert the build.sh file into an executable by running the below command.
+chmod +x ./build.sh
 
-# Below command runs the executable file.
-./mkbwc.out
+
+# Below command builds the project and generates the executable file.
+./build.sh 
 ```
+
+The **Commands and Outputs** section of this file gives different ways of running the executable file with various command-line options.
 
 ## Testing
 
