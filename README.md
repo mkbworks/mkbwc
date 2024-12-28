@@ -29,7 +29,7 @@ The **Commands and Outputs** section of this file gives different ways of runnin
 To run the test scripts, run the below command on the terminal.
 
 ```bash
-go test -v -cover
+go test ./lib/metrics -v -cover
 ```
 
 - The **-v** command line option enables the verbose logs to be printed as the test scripts are being executed.
@@ -46,7 +46,7 @@ In this example, we fetch the number of lines, words and bytes present in file -
 **Input Command**
 
 ```bash
-./mkbwc.out ./test-files/test-one.txt
+./mkbwc ./test-files/test-one.txt
 ```
 
 **Output displayed**
@@ -62,7 +62,7 @@ In this example, we fetch the number of lines present in file - `test-two.txt`.
 **Input Command**
 
 ```bash
-./mkbwc.out -l ./test-files/test-two.txt
+./mkbwc -l ./test-files/test-two.txt
 ```
 
 **Output displayed**
@@ -78,7 +78,7 @@ In this example, we fetch the number of bytes of content present in file - `test
 **Input Command**
 
 ```bash
-./mkbwc.out -c ./test-files/test-two.txt
+./mkbwc -c ./test-files/test-two.txt
 ```
 
 **Output displayed**
@@ -94,13 +94,13 @@ In this example, we display the help message associated with the `MKBWC` command
 **Input Command**
 
 ```bash
-./mkbwc.out -h
+./mkbwc -h
 ```
 
 **Output displayed**
 
 ```bash
-Usage: ./mkbwc.out [options] filename(s)
+Usage: ./mkbwc [options] filename(s)
 Options available:
   -c	Output the number of bytes in the given file
   -h	Show the help message
@@ -116,7 +116,7 @@ In this example, we chain the `mkbwc` command with the `find` command such that 
 **Input Command**
 
 ```bash
-find "./test-files" -type f | ./mkbwc.out -m
+find "./test-files" -type f | ./mkbwc -m
 ```
 
 **Output displayed**
