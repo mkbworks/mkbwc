@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"os"
 	"bufio"
+	"github.com/mkbworks/mkbwc/lib/metrics"
 )
 
 func main() {
 	flag.Usage = func() {
-		fmt.Println("Usage: ./mkbwc.out [options] filename(s)")
+		fmt.Println("Usage: ./mkbwc [options] filename(s)")
 		fmt.Println("Options available:")
 		flag.PrintDefaults()
 	}
@@ -45,7 +46,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	bp := new(BulkProcess)
+	bp := new(metrics.BulkProcess)
 	bp.LineFlag = *LinesFlag
 	bp.WordFlag = *WordsFlag
 	bp.CharFlag = *CharsFlag
