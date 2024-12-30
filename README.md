@@ -41,54 +41,6 @@ This section contains various example variations for the **mkbwc** command and t
 
 ### Example One
 
-In this example, we fetch the number of lines, words and bytes present in file - `test-one.txt`. If there are no options provided in the command line, the program computes the 3 aforementioned metrics.
-
-**Input Command**
-
-```bash
-./mkbwc ./test-files/test-one.txt
-```
-
-**Output displayed**
-
-```bash
-1  41  285  test-one.txt
-```
-
-### Example Two
-
-In this example, we fetch the number of lines present in file - `test-two.txt`.
-
-**Input Command**
-
-```bash
-./mkbwc -l ./test-files/test-two.txt
-```
-
-**Output displayed**
-
-```bash
-5  test-two.txt
-```
-
-### Example Three
-
-In this example, we fetch the number of bytes of content present in file - `test-two.txt`.
-
-**Input Command**
-
-```bash
-./mkbwc -c ./test-files/test-two.txt
-```
-
-**Output displayed**
-
-```bash
-1663  test-two.txt
-```
-
-### Example Four
-
 In this example, we display the help message associated with the `MKBWC` command to understand the various options available for us to use with the command.
 
 **Input Command**
@@ -107,6 +59,54 @@ Options available:
   -l	Output the number of lines in the given file
   -m	Output the number of characters in the given file
   -w	Output the number of words in the given file
+```
+
+### Example Two
+
+In this example, we fetch the number of lines, words and bytes present in file - `test-one.txt`. If there are no options provided in the command line, the program computes the 3 aforementioned metrics.
+
+**Input Command**
+
+```bash
+./mkbwc ./test-files/test-one.txt
+```
+
+**Output displayed**
+
+```bash
+1  41  285  test-one.txt
+```
+
+### Example Three
+
+In this example, we fetch the number of lines present in file - `test-two.txt`.
+
+**Input Command**
+
+```bash
+./mkbwc -l ./test-files/test-two.txt
+```
+
+**Output displayed**
+
+```bash
+5  test-two.txt
+```
+
+### Example Four
+
+In this example, we fetch the number of bytes of content present in file - `test-two.txt`.
+
+**Input Command**
+
+```bash
+./mkbwc -c ./test-files/test-two.txt
+```
+
+**Output displayed**
+
+```bash
+1663  test-two.txt
 ```
 
 ### Example Five
